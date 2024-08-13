@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-auto">
+    <h2>Welcome, {{name}}!</h2>
+  </div>
+</div>
+
+  {{#if posts.length}}
+  <div class="col-md-6 post-list">
+    <h3>Current Posts:</h3>
+
+    {{#each posts as |post|}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <h4><a href="/post-detail/{{post.id}}">{{post.title}} {{post.date_created}}</a></h4>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-sm btn-danger" data-id="{{post.id}}">DELETE</button>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  {{/if}}
+
+  <div class="col-md-4">
+        <button class="btn btn-sm" data-id="{{post.id}}">New Post</button>
+  </div>
+
+</div>
+
+<!-- <script src="./js/profile.js"></script> -->
+<script src="./js/dashboard.js"></script>
