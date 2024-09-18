@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Why MVC is so important",
+    "description": "MVC allows developers to maintain a true separation of concerns, devising their code between the Model layer for data, the View layer for design, and the Controller layer for application logic."
+  },
+  {
+    "title": "Authentication vs. Authorization",
+    "description": "There is a difference between authentication and authorization. Authentication means confirming your own identity, whereas authorization means being allowed to access system resources."
+  },  
+  {
+    "title": "What is ORM?",
+    "description": "ORM is an Object-Relational Mapping, which is a technique for converting data between incompatible type systems using object-oriented programming languages."
+  },
+  {
+    "title": "What is Sequalize?",
+    "description": "Sequelize is a popular Object-Relational Mapping (ORM) library for Node.js. It simplifies working with databases by allowing you to interact with them using JavaScript objects instead of writing raw SQL queries."  
+  },
+  {
+    "title": "What is MongoDB?",
+    "description": "MongoDB is a popular NoSQL database known for its flexibility and scalability. It is Document-Oriented, Schema-Less and capable of horizontal scaling."
+  },
+  {
+    "title": "What is Mongoose?",
+    "description": "Mongoose is an Object Data Modeling (ODM) library for MongoDB and Node.js. It provides a schema-based solution to model your application data, making it easier to work with MongoDB in a structured and consistent way."
+  }
+]

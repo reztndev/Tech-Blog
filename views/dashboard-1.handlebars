@@ -10,7 +10,7 @@
 
     <form class="form new-post-form">
       <div class="form-group">
-        <label for="post-name">post name:</label>
+        <label for="post-name">post title:</label>
         <input class="form-input" type="text" id="post-name" name="post-name" />
       </div>
       
@@ -31,15 +31,17 @@
     {{#each posts as |post|}}
     <div class="row mb-2">
       <div class="col-md-8">
-        <h4><a href="/post/{{post.id}}">{{post.name}}</a></h4>
+        <h4><a href="/post/{{post.id}}">{{post.title}}</a></h4>
       </div>
       <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{{post.id}}">DELETE</button>
+        <button type="click" class="btn btn-sm btn-danger" data-id="{{post.id}}">DELETE</button>
       </div>
     </div>
     {{/each}}
   </div>
   {{/if}}
+
+  <p>Inside: dashboard-1.handlebars</p>
 </div>
 
 <!--<script src="./js/profile.js"></script> -->

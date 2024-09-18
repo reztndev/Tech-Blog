@@ -38,8 +38,8 @@ router.post('/:id', withAuth, async (req, res) => {
 
     const newComment = await Comment.create({
       ...req.body,
-      user_id: req.session.user_id,
-      post_id: postId,
+      userId: req.session.user_id,
+      postId: postId,
     });
 
     // Associate the new comment with the post

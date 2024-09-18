@@ -1,5 +1,13 @@
 module.exports = {
   format_date: (date) => {
+
+    // Debug logs
+    //console.log('Inside helper.js: Date: ', date);
+    if (!date) {
+      //console.log('Inside helper.js: Invalid Date');
+      return 'Invalid Date';
+    }
+
     // Format date as MM/DD/YYYY
     return date.toLocaleDateString();
   },
