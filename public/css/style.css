@@ -31,9 +31,21 @@ header nav {
   padding-right: 50px; /* Adjust this value as needed */
 }
 
-
 .main-nav a, .main-nav button {
   font-weight: bold;
+}
+
+.custom-heading {
+  color:gray
+
+}
+
+.post-title {
+  color: #2F4F4F; /* This is Darkslategray, you can change it to any color you prefer */
+}
+
+.custom-label {
+  color:gray;
 }
 
 .comment-list {
@@ -74,4 +86,13 @@ header nav {
 textarea.form-input {
     background-color:lightgoldenrodyellow;
   }
+
+
+.new-post-form .form-input,
+.new-post-form .custom-input {
+    background-color: lightgoldenrodyellow !important;
+    color: #333 !important;
+}
+
+
 
