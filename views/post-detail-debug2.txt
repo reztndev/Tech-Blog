@@ -1,0 +1,85 @@
+In the following section of the handlebar for comments list, I would like
+to enclose each comment entry in a box with a border:
+
+{{#if comments.length}}
+    <div class="comment-list">
+      <h3>Current comments:</h3>
+
+      {{#each comments as |comment|}}
+      <div class="comment-item">
+        <p class="comment-content">{{comment.content}}</p>
+        <p class="comment-meta">Posted by {{comment.user.name}} on {{format_date comment.date_created}}</p>
+      </div>
+      {{/each}}
+    </div>
+  {{/if}}
+</div>
+
+Specification:
+1. Enclose <p class="comment-content">{{comment.content}}</p> in a box with border
+2. Enclose <p class="comment-meta">Posted by {{comment.user.name}} on {{format_date comment.date_created}}</p> also 
+in a box with border, but attached to the comment.content box above it
+
+This provides an overall enclosing box that includes the content on top and a bar of sort at the bottom of it
+where the "Posted by username on given date" is displayed
+
+Perhaps a Card with yet another enclosing Card could be used to achieve this?
+
+-----------------------------------------------------
+Q's response
+-----------------------------------------------------
+Yes, you can achieve the desired layout by using Bootstrap's card components. Here's how you can modify 
+the Handlebars template to enclose each comment in a card with a border:
+
+{{#if comments.length}}
+  <div class="comment-list">
+    <h3>Current comments:</h3>
+
+    {{#each comments as |comment|}}
+    <div class="card mb-3">
+      <div class="card-body">
+        <p class="card-text comment-content">{{comment.content}}</p>
+      </div>
+      <div class="card-footer comment-meta">
+        Posted by {{comment.user.name}} on {{format_date comment.date_created}}
+      </div>
+    </div>
+    {{/each}}
+  </div>
+{{/if}}
+
+In this updated template:
+
+1. Each comment is wrapped in a <div class="card mb-3"> element, which creates a card with a border 
+and some bottom margin for spacing.
+
+2. The comment content is placed inside a <div class="card-body"> element, which provides padding 
+and styles the content area.
+
+3. The comment metadata (username and date) is placed inside a <div class="card-footer comment-meta"> 
+element, which creates a footer section for the card.
+
+You can further customize the appearance of the cards by adding additional CSS styles. 
+
+For example, you can change the border color, background color, or add shadows to the cards.
+
+Here's an example of how you can style the cards using CSS:
+.card {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-footer {
+  background-color: #f8f9fa;
+  border-top: 1px solid #ccc;
+  font-size: 0.9em;
+  color: #666;
+}
+
+This CSS adds a light border, a subtle box shadow, and a slightly different background color for 
+the card footer. You can adjust these styles to match your desired design.
+
+With this approach, each comment will be displayed in a separate card with a border, and the 
+comment content will be separated from the metadata by a footer section. This layout provides a 
+clear visual separation between comments and makes it easier for users to distinguish individual comments.
