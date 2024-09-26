@@ -44,20 +44,6 @@ router.get('/post/:id', async (req, res) => {
   //console.log("req.body: ", req.body);
 
   try {
-    // const postData = await Post.findByPk(req.params.id, {
-    //   include: [
-    //     {
-    //       model: User,
-    //       attributes: ['name'],
-    //     },
-    //     // {
-    //     //   model: Comment,
-    //     //   //attributes: ['id', 'content', 'date_created', 'post_id', 'user_id'],
-    //     //   attributes: ['id', 'content', 'date_created', 'user_id'],
-    //     // },
-    //   ],
-    // });
-
     const postData = await Post.findByPk(req.params.id, {
       include: [
         User,
@@ -67,22 +53,6 @@ router.get('/post/:id', async (req, res) => {
         },
       ],
     });
-
-    /** The above works. Here is the log after a fetching the post by its id:
-     * Cleanded up post:  {
-        id: 1,
-        title: 'Why MVC is so important',
-        content: 'MVC allows developers to maintain a true separation of concerns, devising their code between the Model layer for data, the View layer for design, and the Controller layer for application logic.',
-        date_created: 2024-08-14T21:49:22.217Z,
-        user_id: 2,
-        user: {
-          id: 2,
-          name: 'Sal',
-          password: '$2b$10$3OLJCwFzNSpcPYs8riP5DOkN9vWyeWiy1C8VnjrorgKPGx7.n2Up2'
-        },
-        comments: []
-      }
-     */
 
     if (!postData) {
       console.log("---> No postData found with this id!");  
@@ -133,7 +103,6 @@ console.log("---> req.body: ", req.body);
     });
   } catch (err) {
     console.log(err);
-    // EagerLoadingError [SequelizeEagerLoadingError]: post is not associated to user!
     res.status(500).json(err);
   }
 });

@@ -23,22 +23,6 @@ Post.init(
       allowNull: false,
       defaultValue: DataTypes.NOW,
     },
-
-    /** 
-     * After singing up a user, when the /dashboard-1 tries to perfom the 
-     * following to find the user:
-
-        const userData = await User.findByPk(req.session.user_id, {
-          attributes: { exclude: ['password'] },
-          include: [{ model: Post }],
-        });
-
-      We get the following runtime error:
-
-      EagerLoadingError [SequelizeEagerLoadingError]: post is not associated to user!
-     */
-
-    // As such, restored the forign key below to see if it would fix the problem
     user_id: {
       type: DataTypes.INTEGER,
       references: {
@@ -46,7 +30,6 @@ Post.init(
         key: 'id',
       },
     },
-
   },
 
   {

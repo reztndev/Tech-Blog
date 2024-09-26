@@ -5,19 +5,6 @@
     <h2>
       <a href="/post/{{post.id}}">{{post.title}}</a>
     </h2>
-    <!-- Note: As per Mark, (/models/Post.js) was modified by commenting out the following line:
-    >> //timestamps: false.  
-    This means that Sequalize is now auto generating the timestamp.  As such, the following line was
-    also removed from the (post.js):
-    >> // date_created
-    This is because we are allowing Sequalize to generated the timestamp.
-    Finally, the following original line in this file updated to 
-    >> post.date_created  was changged to post.createdAt:
-    <p>Posted by {{post.user.name}} on {{format_date post.date_created}}</p>
-
-    <p>Posted by {{post.user.name}} on {{format_date post.createdAt}}</p> -->
-
-    <!-- Restored given the undefined date object issue in format_date function -->
     <p>Posted by {{post.user.name}} on {{format_date post.date_created}}</p>
   </div>
   <div class="col-md-7">
@@ -29,4 +16,4 @@
 {{/each}}
 
 <br>
-<p>Inside homepage.handlebars</p>
+<!-- <p>Inside homepage.handlebars</p> -->

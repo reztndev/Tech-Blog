@@ -1,3 +1,9 @@
+header {
+  background-color:antiquewhite;
+  background-color:azure;
+  background-color:aliceblue;
+}
+
 header, .post:not(:last-child) {
   border-bottom: 1px solid #ccc;
 }
