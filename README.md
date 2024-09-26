@@ -1,20 +1,49 @@
 # 14 Model-View-Controller (MVC): Tech Blog
 
-## Your Task
+## Summary
+In this challenge, we'll build blog site where developers can publish their blog posts and comment on other developers’ posts as well. The program allows all users that visit the site to view all articles that have been posted by other users; however, only logged in users can comment on other users' posts. The logged in users also have the advantage of being able to post new articles to the blog site, or delete them if they no longer wish to share them with other users.
 
-Writing about tech can be just as important as making it. Developers spend plenty of time creating new applications and debugging existing codebases, but most developers also spend at least some of their time reading and writing about technical concepts, recent advancements, and new technologies. A simple Google search for any concept covered in this course returns thousands of think pieces and tutorials from developers of all skill levels!
+## Technology
+The application uses a popular set of frontend and backend technologies to create and support its user driven functions and activities.  The following is an outline of the prominent technologies used in this application:
 
-Your task this week is to build a CMS-style blog site similar to a Wordpress site, where developers can publish their blog posts and comment on other developers’ posts as well. You’ll build this site completely from scratch and deploy it to Render. Your app will follow the MVC paradigm in its architectural structure, using Handlebars.js as the templating language, Sequelize as the ORM, and the express-session npm package for authentication.
+1. Postgres SQL database for storing and managing the users credentials, posts and comments 
 
-## User Story
+2. Sequalize, a Node.js Object Relational Mapper (ORM) tool, that is used to configure and interact with the Postgres database
 
-```md
-AS A developer who writes about tech
-I WANT a CMS-style blog site
-SO THAT I can publish articles, blog posts, and my thoughts and opinions
-```
+3. Express.js for implementing and serving the various routes (APIs) that may be used to perform the standard CRUD (Create, Read, Update, Delete) operations of the database models
 
-## Acceptance Criteria
+4. express-session npm package for user authentication
+
+5. Handlebars.js as the templating language to generate the different pages that the user interacts with on the site
+
+## Architecture
+The application architecture is based on the popular Model-View-Controller design pattern that clearly delineates its structural and functional components. The following is an outline of the three architectural constituants that are employed in this application:
+
+1. Model
+This component handles the data-related logic, such as interaction with the database to perform the necessary CRUD operations and is supported by Sequalize and Postgres and its central relational database.  The Sequalize schemas that model the application data, include User, Post and Comment.  For details on each particular schema, refer to the corresponding files in the (models) directory. The file (index.js) in the same directory define the relationships between the three models, including the "hasMany" and "belongsTo" relationships that are in turn implemented in the schemas.
+
+2. View
+This component refers to presentation layer of the application. It displays the data to the user and sends user commands to the controller. Essentially, it represents the UI. The view in this case is supported by the previously mentioned Handlebars and a collection of JavaScript routines that service the corresponding pages and provide event handling such as processing the user button presses.
+
+3. Controller
+The controller acts as an intermediary between the Model and the View. It processes user input, interacts with the model to update the data, and then updates the view accordingly. It contains the business logic of the application. This application uses REST for API routes that include a collection of controllers, including (homeRoutes, userRoutes, postRoutes and commentRoutes).  For the details on the implementation of these routes, refer to the (controllers) folder.
+
+## Application Setup
+To provide a headstart in creating and running the Tech Blog site, sample seed data is provided to populate the database models for User and Post. To accomplish the seeding, the following database needs to be created via Postgres's shell:
+* techblog_db
+
+A schema.sql is provided for facilitating this task.
+
+Once the database is created, the User and Post models need to be seeded by running the following in the command shell:
+* npm run seed
+
+## Operation
+Once the database is created and models are seeded, the application may be started by running the following in the command shell:
+* npm start
+
+This command starts the server and allows the user to load and interact with the application.  To load the application in your browser, type the following in the address bar: http://localhost:3001/
+
+The following (if-then scenarios) outline the overall functionality and user interactions on the blog site:
 
 ```md
 GIVEN a CMS-style blog site
@@ -51,82 +80,41 @@ THEN I am signed out of the site
 WHEN I am idle on the site for more than a set time
 THEN I am able to view posts and comments but I am prompted to log in again before I can add, update, or delete posts
 ```
+## Future Enhancements
+This application in its current form serves as a proof of concept for implementing an MVC model application its objectives are purely academic.
 
-## Mock-Up
+Additional features are undoubtedly needed to make this application more useful.  The following is an outline of upcoming features that are currently in the planning phase:
 
-The following animation demonstrates the application functionality:
+1. User Profile
+The ability to display and edit the user profile such as email and password should be considered given that users may need to change their login credentials from time to time
 
-![Animation cycles through signing into the app, clicking on buttons, and updating blog posts.](./Assets/14-mvc-homework-demo-01.gif)
+2. Interactive Elements
+Adding polls, quizzes, and interactive infographics can make this Tech blog more engaging and encourage user interactions
 
-## Getting Started
+3. Email Subscription 
+Offering an email subscription option to keep your readers updated with your latest posts and news
 
-Your application’s folder structure must follow the Model-View-Controller paradigm. You’ll need to use the [express-handlebars](https://www.npmjs.com/package/express-handlebars) package to implement Handlebars.js for your Views, use the [pg](https://www.npmjs.com/package/pg) and [Sequelize](https://www.npmjs.com/package/sequelize) packages to connect to a PostgreSQL database for your Models, and create an Express.js API for your Controllers.
+4. Related Posts
+Displaying related posts at the end of each article to keep readers on the site longer
 
-You’ll also need the [dotenv package](https://www.npmjs.com/package/dotenv) to use environment variables, the [bcrypt package](https://www.npmjs.com/package/bcrypt) to hash passwords, and the [express-session](https://www.npmjs.com/package/express-session) and [connect-session-sequelize](https://www.npmjs.com/package/connect-session-sequelize) packages to add authentication.
+## Deployment
+The application is deployed to the cloud based Render platform featuring continuous development and deployment of the hosted applications.  
 
-**Note**: The [express-session](https://www.npmjs.com/package/express-session) package stores the session data on the client in a cookie. When you are idle on the site for more than a set time, the cookie will expire and you will be required to log in again to start a new session. This is the default behavior and you do not have to do anything to your application other than implement the npm package.
+## Link to the Live Application
+To run the application on the Render platform, click the following link: https://tech-blog-f56r.onrender.com/
 
-## Grading Requirements
+## Executing the Application Locally
+To run the application locally, perform the following
+* Clone the project from: https://github.com/reztndev/Tech-Blog
+* Open the project in Visual Studio Code
+* Create the database as mentioned above
+* Open a terminal and run the following:
+1. npm install
+2. npm run seed
+2. npm start
 
-> **Note**: If a Challenge assignment submission is marked as “0”, it is considered incomplete and will not count towards your graduation requirements. Examples of incomplete submissions include the following:
->
-> * A repository that has no code
->
-> * A repository that includes a unique name but nothing else
->
-> * A repository that includes only a README file but nothing else
->
-> * A repository that only includes starter code
-
-This Challenge is graded based on the following criteria:
-
-### Technical Acceptance Criteria: 40%
-
-* Satisfies all of the preceding acceptance criteria plus the following:
-
-  * Application’s folder structure follows the Model-View-Controller paradigm.
-
-  * Uses the [express-handlebars](https://www.npmjs.com/package/express-handlebars) package to implement Handlebars.js for your Views.
-
-  * Application must be deployed to Render.
-
-### Deployment: 32%
-
-* Application deployed at live URL.
-
-* Application loads with no errors.
-
-* Application GitHub URL submitted.
-
-* GitHub repository contains application code.
-
-### Application Quality: 15%
-
-* User experience is intuitive and easy to navigate.
-
-* User interface style is clean and polished.
-
-* Application resembles the mock-up functionality provided in the Challenge instructions.
-
-### Repository Quality: 13%
-
-* Repository has a unique name.
-
-* Repository follows best practices for file structure and naming conventions.
-
-* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
-
-* Repository contains multiple descriptive commit messages.
-
-* Repository contains quality readme file with description, screenshot, and link to deployed application.
-
-## Review
-
-You are required to submit BOTH of the following for review:
-
-* The URL of the functional, deployed application.
-
-* The URL of the GitHub repository, with a unique name and a readme describing the project.
-
----
-© 2024 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
+## Screenshots of the Application
+![Homepage:](./public/images/homepage.png)
+![Login:](./public/images/login-signup.png)
+![Dashboard:](./public/images/dashboard.png)
+![Post-Detail:](./public/images/post-detail.png)
